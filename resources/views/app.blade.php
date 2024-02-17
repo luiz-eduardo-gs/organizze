@@ -154,59 +154,198 @@
             </div>
         </div>
 
-        <div class="bg-white mx-auto w-[500px] mt-8 p-8">
-            <div class="divide-y">
-                <div class="flex gap-2 mb-4">
-                    <div class="border rounded w-1 border-green-600 bg-green-600">&nbsp;</div>
-                    <div class="flex flex-col">
-                        <span class="text-gray-500">Saldo geral</span>
-                        <div>
-                            <span class="text-gray-500 text-xl">R$</span>
-                            <span class="text-2xl font-medium">137.23</span>
+        <div class="flex justify-center gap-7">
+            <div class="bg-white rounded-lg w-[550px] h-[500px] mt-8 p-8">
+                <div class="divide-y">
+                    <div class="flex gap-2 mb-4">
+                        <div class="border rounded w-1 border-green-600 bg-green-600">&nbsp;</div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-500">Saldo geral</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-gray-500 text-xl">R$</span>
+                                <span class="text-2xl font-medium">137.23</span>
+                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10.0002 2.41667C13.1585 2.41667 15.9752 4.19167 17.3502 7C15.9752 9.80833 13.1668 11.5833 10.0002 11.5833C6.8335 11.5833 4.02516 9.80833 2.65016 7C4.02516 4.19167 6.84183 2.41667 10.0002 2.41667ZM10.0002 0.75C5.8335 0.75 2.27516 3.34167 0.833496 7C2.27516 10.6583 5.8335 13.25 10.0002 13.25C14.1668 13.25 17.7252 10.6583 19.1668 7C17.7252 3.34167 14.1668 0.75 10.0002 0.75ZM10.0002 4.91667C11.1502 4.91667 12.0835 5.85 12.0835 7C12.0835 8.15 11.1502 9.08333 10.0002 9.08333C8.85016 9.08333 7.91683 8.15 7.91683 7C7.91683 5.85 8.85016 4.91667 10.0002 4.91667ZM10.0002 3.25C7.9335 3.25 6.25016 4.93333 6.25016 7C6.25016 9.06667 7.9335 10.75 10.0002 10.75C12.0668 10.75 13.7502 9.06667 13.7502 7C13.7502 4.93333 12.0668 3.25 10.0002 3.25Z"
+                                        fill="#858782"></path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
+                    <div class="pt-4">
+                        <h4 class="font-semibold text-lg">Minhas contas</h4>
+                        <ul class="divide-y">
+                            <li class="flex justify-between items-center py-4">
+                                <div class="flex gap-2">
+                                    <img class="rounded-full w-12 h-12"
+                                        src="https://assets.organizze.com.br/institutions/logos/itau.png">
+                                    <div>
+                                        <h5 class="font-semibold">Itaú</h5>
+                                        <p class="text-gray-500 text-sm">Conta manual</p>
+                                    </div>
+                                </div>
+                                <span class="text-blue-600 text-xl font-semibold">R$ 105,57</span>
+                            </li>
+                            <li class="flex justify-between items-center py-4">
+                                <div class="flex gap-2">
+                                    <img class="rounded-full w-12 h-12"
+                                        src="https://assets.organizze.com.br/institutions/logos/nubank.png">
+                                    <div>
+                                        <h5 class="font-semibold">Nubank</h5>
+                                        <p class="text-gray-500 text-sm">Conta manual</p>
+                                    </div>
+                                </div>
+                                <span class="text-blue-600 text-xl font-semibold">R$ 31,66</span>
+                            </li>
+                            <li class="flex justify-between items-center py-4">
+                                <div class="flex gap-2">
+                                    <img class="rounded-full w-12 h-12"
+                                        src="https://assets.organizze.com.br/institutions/logos/will-bank.png">
+                                    <div>
+                                        <h5 class="font-semibold">Will Bank</h5>
+                                        <p class="text-gray-500 text-sm">Conta manual</p>
+                                    </div>
+                                </div>
+                                <span class="text-blue-600 text-xl font-semibold">R$ 0,00</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="pt-4">
-                    <h4 class="font-semibold text-lg">Minhas contas</h4>
-                    <ul class="divide-y">
-                        <li class="flex justify-between items-center py-4">
-                            <div class="flex gap-2">
-                                <img class="rounded-full w-12 h-12"
-                                    src="https://assets.organizze.com.br/institutions/logos/itau.png">
-                                <div>
-                                    <h5 class="font-semibold">Itaú</h5>
-                                    <p class="text-gray-500 text-sm">Conta manual</p>
-                                </div>
-                            </div>
-                            <span class="text-blue-600 text-xl font-semibold">R$ 105,57</span>
-                        </li>
-                        <li class="flex justify-between items-center py-4">
-                            <div class="flex gap-2">
-                                <img class="rounded-full w-12 h-12"
-                                    src="https://assets.organizze.com.br/institutions/logos/nubank.png">
-                                <div>
-                                    <h5 class="font-semibold">Nubank</h5>
-                                    <p class="text-gray-500 text-sm">Conta manual</p>
-                                </div>
-                            </div>
-                            <span class="text-blue-600 text-xl font-semibold">R$ 31,66</span>
-                        </li>
-                        <li class="flex justify-between items-center py-4">
-                            <div class="flex gap-2">
-                                <img class="rounded-full w-12 h-12"
-                                    src="https://assets.organizze.com.br/institutions/logos/will-bank.png">
-                                <div>
-                                    <h5 class="font-semibold">Will Bank</h5>
-                                    <p class="text-gray-500 text-sm">Conta manual</p>
-                                </div>
-                            </div>
-                            <span class="text-blue-600 text-xl font-semibold">R$ 0,00</span>
-                        </li>
-                    </ul>
-                </div>
+    
+                <button
+                    class="text-gray-400 border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
+                    contas</button>
             </div>
-
-            <button class="text-gray-400 border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar contas</button>
+    
+            <div class="bg-white rounded-lg w-[500px] mt-8 p-8">
+                <div class="divide-y">
+                    <div class="flex gap-2 mb-4">
+                        <div class="border rounded w-1 border-green-600 bg-green-600">&nbsp;</div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-500">Faturas de Março</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-gray-500 text-xl">R$</span>
+                                <span class="text-2xl font-medium">-1.746,04</span>
+                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10.0002 2.41667C13.1585 2.41667 15.9752 4.19167 17.3502 7C15.9752 9.80833 13.1668 11.5833 10.0002 11.5833C6.8335 11.5833 4.02516 9.80833 2.65016 7C4.02516 4.19167 6.84183 2.41667 10.0002 2.41667ZM10.0002 0.75C5.8335 0.75 2.27516 3.34167 0.833496 7C2.27516 10.6583 5.8335 13.25 10.0002 13.25C14.1668 13.25 17.7252 10.6583 19.1668 7C17.7252 3.34167 14.1668 0.75 10.0002 0.75ZM10.0002 4.91667C11.1502 4.91667 12.0835 5.85 12.0835 7C12.0835 8.15 11.1502 9.08333 10.0002 9.08333C8.85016 9.08333 7.91683 8.15 7.91683 7C7.91683 5.85 8.85016 4.91667 10.0002 4.91667ZM10.0002 3.25C7.9335 3.25 6.25016 4.93333 6.25016 7C6.25016 9.06667 7.9335 10.75 10.0002 10.75C12.0668 10.75 13.7502 9.06667 13.7502 7C13.7502 4.93333 12.0668 3.25 10.0002 3.25Z"
+                                        fill="#858782"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <h4 class="font-semibold text-lg">Meus cartões</h4>
+                        <ul class="divide-y">
+                            <li>
+                                <div class="flex justify-between items-center py-4">
+                                    <div class="flex gap-2">
+                                        <img class="rounded-md w-16 h-14"
+                                            src="https://assets.organizze.com.br/institutions/logos/nubank.png">
+                                        <div>
+                                            <h5 class="font-semibold">Itaú</h5>
+                                            <p class="text-gray-500 text-sm">Conta manual</p>
+                                        </div>
+                                    </div>
+    
+                                    <button
+                                        class="text-sm bg-green-200 text-green-600 py-2 px-3 rounded-md transition duration-700 ease-in-out hover:bg-green-100 hover:text-green-500">Ver
+                                        fatura</button>
+                                </div>
+                                <div class="bg-zinc-100 rounded-3xl mb-4 flex justify-between p-4">
+                                    <div class="pl-14">
+                                        <span class="text-gray-500">Limite Disponível</span>
+                                        <div>
+                                            <span class="text-gray-500 text-lg">R$</span>
+                                            <span class="text-xl font-semibold">9633,91</span>
+                                        </div>
+                                    </div>
+                                    <div class="pr-6">
+                                        <span class="text-gray-500">Fatura atual <span class="text-gray-400 text-xs">(Venc.
+                                                1/3)</span></span>
+                                        <div>
+                                            <span class="text-gray-500 text-lg">R$</span>
+                                            <span class="text-xl font-semibold">-366,09</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex justify-between items-center py-4">
+                                    <div class="flex gap-2">
+                                        <img class="rounded-md w-16 h-14"
+                                            src="https://assets.organizze.com.br/institutions/logos/itau.png">
+                                        <div>
+                                            <h5 class="font-semibold">Itaú</h5>
+                                            <p class="text-gray-500 text-sm">Conta manual</p>
+                                        </div>
+                                    </div>
+    
+                                    <button
+                                        class="text-sm bg-green-200 text-green-600 py-2 px-3 rounded-md transition duration-700 ease-in-out hover:bg-green-100 hover:text-green-500">Ver
+                                        fatura</button>
+                                </div>
+                                <div class="bg-zinc-100 rounded-3xl mb-4 flex justify-between p-4">
+                                    <div class="pl-14">
+                                        <span class="text-gray-500">Limite Disponível</span>
+                                        <div>
+                                            <span class="text-gray-500 text-lg">R$</span>
+                                            <span class="text-xl font-semibold">9633,91</span>
+                                        </div>
+                                    </div>
+                                    <div class="pr-6">
+                                        <span class="text-gray-500">Fatura atual <span class="text-gray-400 text-xs">(Venc.
+                                                1/3)</span></span>
+                                        <div>
+                                            <span class="text-gray-500 text-lg">R$</span>
+                                            <span class="text-xl font-semibold">-366,09</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex justify-between items-center py-4">
+                                    <div class="flex gap-2">
+                                        <img class="rounded-md w-16 h-14"
+                                            src="https://assets.organizze.com.br/institutions/logos/will-bank.png">
+                                        <div>
+                                            <h5 class="font-semibold">Itaú</h5>
+                                            <p class="text-gray-500 text-sm">Conta manual</p>
+                                        </div>
+                                    </div>
+    
+                                    <button
+                                        class="text-sm bg-green-200 text-green-600 py-2 px-3 rounded-md transition duration-700 ease-in-out hover:bg-green-100 hover:text-green-500">Ver
+                                        fatura</button>
+                                </div>
+                                <div class="bg-zinc-100 rounded-3xl mb-4 flex justify-between p-4">
+                                    <div class="pl-14">
+                                        <span class="text-gray-500">Limite Disponível</span>
+                                        <div>
+                                            <span class="text-gray-500 text-lg">R$</span>
+                                            <span class="text-xl font-semibold">9633,91</span>
+                                        </div>
+                                    </div>
+                                    <div class="pr-6">
+                                        <span class="text-gray-500">Fatura atual <span class="text-gray-400 text-xs">(Venc.
+                                                1/3)</span></span>
+                                        <div>
+                                            <span class="text-gray-500 text-lg">R$</span>
+                                            <span class="text-xl font-semibold">-366,09</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <button
+                    class="text-gray-400 border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
+                    cartões</button>
+            </div>
         </div>
     </main>
 </body>

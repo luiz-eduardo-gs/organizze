@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('/transactions', function () {
     return view('transactions');
-});
+})->name('transactions');

@@ -37,7 +37,7 @@
         <h3 class="font-medium text-lg">Acesso rápido</h3>
         <div class="flex gap-3">
             <button data-modal-target="expense" data-modal-toggle="expense"
-                class="flex flex-col gap-2 items-center justify-center border border-gray-100 rounded-md py-4 px-4 w-20 transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer">
+                class="flex flex-col gap-2 items-center justify-center border border-gray-100 rounded-md py-4 px-4 w-20 transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer">
                 <span class="text-red-600">
                     <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
                         class="bi bi-dash-circle" viewBox="0 0 16 16">

@@ -8,6 +8,8 @@
     <title>Organizze</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script src="{{ Vite::asset('node_modules/flowbite/dist/datepicker.js') }}"></script>
 </head>
 
 <body class="bg-zinc-100">

@@ -4,7 +4,7 @@
         observation: false,
         tags: false,
         installments: '',
-        numbers: '',
+        number: '',
         type: '',
      }"
     class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -30,12 +30,13 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
+                <form class="space-y-4" method="post" action="{{ route('transactions.post') }}">
+                    @csrf
                     <div>
                         <label for="description"
                             class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Descrição</label>
                         <input type="text" name="description" id="description"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="Farmácia, mercado..." required />
                     </div>
                     <div class="flex justify-between gap-2">
@@ -43,16 +44,27 @@
                             <label for="value"
                                 class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Valor</label>
                             <input type="number" name="value" id="value"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="R$ 0,00" required />
                         </div>
                         <div class="basis-1/2">
                             <div>
-                                <label for="date"
+                                <label for="due-date"
                                     class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Data</label>
-                                <input type="text" name="date" id="date"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    required />
+
+                                <div class="relative max-w-sm">
+                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                        </svg>
+                                    </div>
+                                    <input datepicker datepicker-autohide datepicker-buttons datepicker-autoselect-today
+                                        datepicker-format="dd/mm/yyyy" type="text" id="due-date" name="due-date"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                                        placeholder="Selecione a data">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,7 +78,8 @@
                         <div class="basis-1/2">
                             <label for="account"
                                 class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Conta/Cartão</label>
-                            <select id="account" name="account" class="w-full rounded-lg">
+                            <select id="account" name="account"
+                                class="w-full rounded-lg focus:border-green-500 focus:ring-green-500">
                                 <option selected value="itau">Itaú</option>
                                 <option value="nubank">Nubank</option>
                             </select>
@@ -74,7 +87,8 @@
                         <div class="basis-1/2">
                             <label for="category"
                                 class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Categoria</label>
-                            <select id="category" name="category" class="w-full rounded-lg">
+                            <select id="category" name="category"
+                                class="w-full rounded-lg focus:border-green-500 focus:ring-green-500">
                                 <option selected>Buscar a categoria...</option>
                             </select>
                         </div>
@@ -94,19 +108,23 @@
                             <label for="installments">é um lançamento parcelado em</label>
                         </div>
 
-                        <select id="fixed" x-show="installments == $el.id">
-                            <option selected value="monthly">Mensal</option>
+                        <select id="fixed" name="fixed" x-show="installments == $el.id"
+                            class="focus:border-green-500 focus:ring-green-500 mt-3 w-full rounded-lg">
+                            <option selected disabled></option>
+                            <option value="monthly">Mensal</option>
                         </select>
 
-                        <div id="installments" x-show="installments == $el.id">
-                            <select x-model="numbers">
-                                <template x-for="numbers in [2, 3]">
-                                    <option x-text="numbers"></option>
+                        <div id="installments" x-show="installments == $el.id" class="flex gap-2 mt-3">
+                            <select x-model="number" name="installments-times"
+                                class="focus:border-green-500 focus:ring-green-500 w-full rounded-lg">
+                                <template x-for="number in [2, 3]">
+                                    <option :value="number" x-text="number"></option>
                                 </template>
                             </select>
-                            <select x-model="type">
+                            <select x-model="type" name="installments-type"
+                                class="focus:border-green-500 focus:ring-green-500 w-full rounded-lg">
                                 <template x-for="type in ['Meses', 'Anos', 'Dias']">
-                                    <option x-text="type"></option>
+                                    <option :value="type" x-text="type"></option>
                                 </template>
                             </select>
                         </div>

@@ -10,15 +10,15 @@
     class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-xl max-h-full">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 p-8">
+        <div class="relative bg-white rounded-lg shadow p-8">
             <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
+                <h3 class="text-lg font-semibold text-gray-900 ">
                     Nova despesa
                 </h3>
                 <button type="button"
                     x-on:click="repeat = false; observation = false; tags = false; recurrence = ''; numbers = ''; type = '';"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                     data-modal-hide="expense">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
@@ -30,40 +30,39 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" method="post" action="{{ route('transactions.post') }}">
+                <form class="space-y-4" method="post" action="#">
                     @csrf
                     <div>
-                        <label for=" description" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">
+                        <label for=" description" class="block mb-2 text-sm font-medium text-gray-500 ">
                             Descrição
                         </label>
                         <input type="text" name="description" id="description"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
                             placeholder="Farmácia, mercado..." required />
                     </div>
                     <div class="flex justify-between gap-2">
                         <div class="basis-1/2">
-                            <label for="value"
-                                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Valor</label>
+                            <label for="value" class="block mb-2 text-sm font-medium text-gray-500 ">Valor</label>
                             <input type="number" name="value" id="value"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
                                 placeholder="R$ 0,00" required />
                         </div>
                         <div class="basis-1/2">
                             <div>
-                                <label for="due-date"
-                                    class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Data</label>
+                                <label for="due-date" class="block mb-2 text-sm font-medium text-gray-500 ">Data</label>
 
                                 <div class="relative max-w-sm">
                                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                             <path
                                                 d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide datepicker-buttons datepicker-autoselect-today
-                                        datepicker-format="dd/mm/yyyy" type="text" id="due-date" name="due-date"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                                        required datepicker-format="dd/mm/yyyy" type="text" id="due-date"
+                                        name="due-date"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5 "
                                         placeholder="Selecione a data">
                                 </div>
                             </div>
@@ -88,7 +87,7 @@
                     <div class="flex justify-between gap-2">
                         <div class="basis-1/2">
                             <label for="account"
-                                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Conta/Cartão</label>
+                                class="block mb-2 text-sm font-medium text-gray-500 ">Conta/Cartão</label>
                             <select id="account" name="account"
                                 class="w-full rounded-lg focus:border-green-500 focus:ring-green-500">
                                 <option selected value="itau">Itaú</option>
@@ -97,7 +96,7 @@
                         </div>
                         <div class="basis-1/2">
                             <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Categoria</label>
+                                class="block mb-2 text-sm font-medium text-gray-500 ">Categoria</label>
                             <select id="category" name="category"
                                 class="w-full rounded-lg focus:border-green-500 focus:ring-green-500">
                                 <option selected>Buscar a categoria...</option>

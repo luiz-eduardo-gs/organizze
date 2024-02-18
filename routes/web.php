@@ -22,3 +22,19 @@ Route::get('/', function () {
 Route::get('/transactions', function () {
     return view('transactions');
 })->name('transactions');
+
+Route::get('/categories', function () {
+    return view('categories');
+})->name('categories');
+
+Route::get('/accounts', function () {
+    return view('accounts');
+})->name('accounts');
+
+Route::get('/cards', function () {
+    return view('cards');
+})->name('cards');
+
+Route::get('/tags', function () {
+    return view('tags');
+})->name('tags');

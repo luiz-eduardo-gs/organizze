@@ -3,7 +3,7 @@
         repeat: false,
         observation: false,
         tags: false,
-        installments: '',
+        recurrence: '',
         number: '',
         type: '',
      }"
@@ -17,7 +17,7 @@
                     Nova despesa
                 </h3>
                 <button type="button"
-                    x-on:click="repeat = false; observation = false; tags = false; installments = ''; numbers = ''; type = '';"
+                    x-on:click="repeat = false; observation = false; tags = false; recurrence = ''; numbers = ''; type = '';"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-hide="expense">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -33,8 +33,9 @@
                 <form class="space-y-4" method="post" action="{{ route('transactions.post') }}">
                     @csrf
                     <div>
-                        <label for="description"
-                            class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Descrição</label>
+                        <label for=" description" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">
+                            Descrição
+                        </label>
                         <input type="text" name="description" id="description"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="Farmácia, mercado..." required />
@@ -68,12 +69,22 @@
                             </div>
                         </div>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-hand-thumbs-up-fill text-green-500 mt-6 absolute top-[235px] right-8"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
-                    </svg>
+                    <button x-data="{isPaid: true}" type="button" @click="isPaid = ! isPaid">
+                        <input hidden name="is-paid" :value="isPaid" />
+                        <svg x-show="isPaid" id="thumbs-up" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor"
+                            class="bi bi-hand-thumbs-up-fill text-green-500 mt-6 absolute top-[39%] right-8"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                        </svg>
+                        <svg x-show="! isPaid" id="thumbs-down" xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor"
+                            class="bi bi-hand-thumbs-down-fill mt-6 absolute top-[39%] right-8" viewBox="0 0 16 16">
+                            <path
+                                d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591" />
+                        </svg>
+                    </button>
                     <div class="flex justify-between gap-2">
                         <div class="basis-1/2">
                             <label for="account"
@@ -96,35 +107,32 @@
                     <div x-show="repeat">
                         <span class="text-gray-500">Repetir</span>
                         <div class="flex items-center gap-2 text-sm">
-                            <input x-model="installments" id="fixed-expense" type="radio" value="fixed"
-                                name="installments"
+                            <input x-model="recurrence" id="fixed-expense" type="radio" value="fixed"
                                 class="checked:text-green-500 checked:ring-transparent focus:ring-transparent" />
                             <label for="fixed-expense">é uma despesa fixa</label>
                         </div>
                         <div class="flex items-center gap-2 text-sm">
-                            <input x-model="installments" id="installments" type="radio" value="installments"
-                                name="installments"
+                            <input x-model="recurrence" id="installments" type="radio" value="installments"
                                 class="checked:text-green-500 checked:ring-transparent focus:ring-transparent" />
                             <label for="installments">é um lançamento parcelado em</label>
                         </div>
 
-                        <select id="fixed" name="fixed" x-show="installments == $el.id"
+                        <select id="fixed" name="recurrence[]" x-show="recurrence == $el.id"
                             class="focus:border-green-500 focus:ring-green-500 mt-3 w-full rounded-lg">
-                            <option selected disabled></option>
                             <option value="monthly">Mensal</option>
                         </select>
 
-                        <div id="installments" x-show="installments == $el.id" class="flex gap-2 mt-3">
-                            <select x-model="number" name="installments-times"
+                        <div id="installments" x-show="recurrence == $el.id" class="flex gap-2 mt-3">
+                            <select x-model="number" name="recurrence[]"
                                 class="focus:border-green-500 focus:ring-green-500 w-full rounded-lg">
                                 <template x-for="number in [2, 3]">
                                     <option :value="number" x-text="number"></option>
                                 </template>
                             </select>
-                            <select x-model="type" name="installments-type"
+                            <select x-model="type" name="recurrence[]"
                                 class="focus:border-green-500 focus:ring-green-500 w-full rounded-lg">
                                 <template x-for="type in ['Meses', 'Anos', 'Dias']">
-                                    <option :value="type" x-text="type"></option>
+                                    <option :value="type.toLowerCase()" x-text="type"></option>
                                 </template>
                             </select>
                         </div>

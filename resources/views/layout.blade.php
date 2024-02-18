@@ -86,6 +86,8 @@
     <main>
         @yield('content')
     </main>
+
+    @stack('script')
 </body>
 
 </html>

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Core\Classification\Infrastructure\Provider;
 
 use Core\Classification\Domain\Repository\CategoryRepositoryInterface;
+use Core\Classification\Domain\Repository\TagRepositoryInterface;
 use Core\Classification\Infrastructure\Repository\MySql\CategoryRepository;
+use Core\Classification\Infrastructure\Repository\MySql\TagRepository;
 use Illuminate\Support\ServiceProvider;
 
 class ClassificationServiceProvider extends ServiceProvider
@@ -32,5 +34,6 @@ class ClassificationServiceProvider extends ServiceProvider
     private function bindInterfaces(): void
     {
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(TagRepositoryInterface::class, TagRepository::class);
     }
 }

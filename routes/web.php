@@ -30,7 +30,3 @@ Route::get('/accounts', function () {
 Route::get('/cards', function () {
     return view('cards');
 })->name('cards');
-
-Route::get('/tags', function () {
-    return view('tags');
-})->name('tags');

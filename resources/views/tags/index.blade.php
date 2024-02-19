@@ -5,14 +5,14 @@
     <aside class="pt-2">
         <ul class="divide-y divide-gray-300 text-gray-500">
             <div class="flex flex-col gap-4 mb-4">
-                <li><a href="{{ route('categories') }}">Categorias</a></li>
+                <li><a href="{{ route('categories.index') }}">Categorias</a></li>
                 <li><a href="{{ route('accounts') }}">Contas</a></li>
                 <li><a href="{{ route('cards') }}">Cartões de crédito</a></li>
             </div>
             <div class="flex flex-col gap-4 pt-4 text-sm">
                 <li><a href="#">Preferências</a></li>
                 <li><a href="#">Plano</a></li>
-                <li class="text-green-600"><a href="{{ route('tags') }}">Tags</a></li>
+                <li class="text-green-600"><a href="{{ route('tags.index') }}">Tags</a></li>
                 <li><a href="#">Alertas</a></li>
                 <li><a href="#">Atividades</a></li>
             </div>
@@ -35,8 +35,9 @@
             </div>
 
             <ul>
-                <li class="py-2">marta</li>
-                <li class="py-2">newton</li>
+                @foreach ($tags as $tag)
+                <li class="py-2">{{ $tag->name }}</li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -73,9 +74,8 @@
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-500">
                             Nome
                         </label>
-                        <input type="text" name="name" id="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
-                            required />
+                        <input type="text" name="name" id="name" required autofocus
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
                     </div>
                     <div>
                         <button type="submit"

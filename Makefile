@@ -20,6 +20,9 @@ bash:
 test:
 	$(SAIL) test
 
+migrate:
+	$(SAIL) artisan migrate
+
 npm-dev:
 	$(SAIL) npm run dev
 

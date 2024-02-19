@@ -12,7 +12,7 @@
             <div class="flex flex-col gap-4 pt-4 text-sm">
                 <li><a href="#">Preferências</a></li>
                 <li><a href="#">Plano</a></li>
-                <li><a href="{{ route('tags') }}">Tags</a></li>
+                <li><a href="{{ route('tags.index') }}">Tags</a></li>
                 <li><a href="#">Alertas</a></li>
                 <li><a href="#">Atividades</a></li>
             </div>

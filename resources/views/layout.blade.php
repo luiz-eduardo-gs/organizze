@@ -79,7 +79,7 @@
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-64 px-8 py-4">
                     <ul class="py-2 text-sm text-gray-700" aria-labelledby="configDropdownBtn">
                         <li>
-                            <a href="{{ route('categories') }}" class="block px-4 py-2 hover:text-green-600">Categorias</a>
+                            <a href="{{ route('categories.index') }}" class="block px-4 py-2 hover:text-green-600">Categorias</a>
                         </li>
                         <li>
                             <a href="#" class="block px-4 py-2 hover:text-green-600">Contas</a>

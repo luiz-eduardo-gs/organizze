@@ -43,3 +43,14 @@ namespace App\Models{
 	class User extends \Eloquent {}
 }
 
+namespace Core\Classification\Infrastructure\Model{
+/**
+ * Core\Classification\Infrastructure\Model\ExpenseCategoryModel
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ExpenseCategoryModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExpenseCategoryModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExpenseCategoryModel query()
+ */
+	class ExpenseCategoryModel extends \Eloquent {}
+}
+

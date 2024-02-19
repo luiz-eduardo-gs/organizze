@@ -20,5 +20,11 @@ bash:
 test:
 	$(SAIL) test
 
+npm-dev:
+	$(SAIL) npm run dev
+
+ide-helper-models:
+	$(SAIL) artisan ide-helper:models --dir="app/Models" --dir="src/Core/Classification/Infrastructure/Model"
+
 format:
 	tools/php-cs-fixer/vendor/bin/php-cs-fixer fix

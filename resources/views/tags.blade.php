@@ -70,10 +70,10 @@
                 <form class="space-y-4" method="post" action="#">
                     @csrf
                     <div>
-                        <label for=" description" class="block mb-2 text-sm font-medium text-gray-500">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-500">
                             Nome
                         </label>
-                        <input type="text" name="description" id="description"
+                        <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
                             required />
                     </div>

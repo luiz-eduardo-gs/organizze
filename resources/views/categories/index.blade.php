@@ -6,7 +6,7 @@
         <ul class="divide-y divide-gray-300 text-gray-500">
             <div class="flex flex-col gap-4 mb-4">
                 <li class="text-green-600"><a href="{{ route('categories.index') }}">Categorias</a></li>
-                <li><a href="{{ route('accounts') }}">Contas</a></li>
+                <li><a href="{{ route('accounts.index') }}">Contas</a></li>
                 <li><a href="{{ route('cards') }}">Cartões de crédito</a></li>
             </div>
             <div class="flex flex-col gap-4 pt-4 text-sm">
@@ -60,7 +60,8 @@
             </ul>
 
             <ul x-show="expense" class="divide-y py-4">
-                @foreach (array_filter($categories, fn ($category) => $category->type->value === 'expense') as $category)
+                @foreach (
+                array_filter($categories, fn ($category) => $category->type->value === 'expense') as $category)
                 <li class="flex justify-between py-2">
                     <div class="flex items-center gap-2">
                         <div class="rounded-full p-5 bg-red-500"></div>
@@ -75,7 +76,8 @@
             </ul>
 
             <ul x-show="income" class="divide-y py-4">
-                @foreach (array_filter($categories, fn ($category) => $category->type->value === 'income') as $category)
+                @foreach (
+                array_filter($categories, fn ($category) => $category->type->value === 'income') as $category)
                 <li class="flex justify-between py-2">
                     <div class="flex items-center gap-2">
                         <div class="rounded-full p-5 bg-green-500"></div>
@@ -92,7 +94,6 @@
         </div>
     </div>
 </div>
-@endsection
 
 <!-- Expense modal -->
 <div id="expense-category" data-modal-placement="top-left" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
@@ -477,3 +478,4 @@
         </div>
     </div>
 </div>
+@endsection

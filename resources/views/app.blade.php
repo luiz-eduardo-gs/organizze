@@ -143,9 +143,9 @@
             </div>
         </div>
 
-        <button
-            class="text-gray-400 border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
-            contas</button>
+        <a href="{{ route('accounts.index') }}"
+            class="text-gray-400 block text-center border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
+            contas</a>
     </div>
 
     <div class="bg-white rounded-lg w-[500px] mt-8 p-8">

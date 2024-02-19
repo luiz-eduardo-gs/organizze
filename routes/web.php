@@ -24,8 +24,8 @@ Route::get('/transactions', function () {
 })->name('transactions');
 
 Route::get('/accounts', function () {
-    return view('accounts');
-})->name('accounts');
+    return view('accounts.index');
+})->name('accounts.index');
 
 Route::get('/cards', function () {
     return view('cards');

@@ -5,14 +5,14 @@
     <aside class="pt-2">
         <ul class="divide-y divide-gray-300 text-gray-500">
             <div class="flex flex-col gap-4 mb-4">
-                <li><a href="{{ route('categories') }}">Categorias</a></li>
-                <li><a href="{{ route('accounts') }}">Contas</a></li>
+                <li><a href="{{ route('categories.index') }}">Categorias</a></li>
+                <li><a href="{{ route('accounts.index') }}">Contas</a></li>
                 <li class="text-green-600"><a href="{{ route('cards') }}">Cartões de crédito</a></li>
             </div>
             <div class="flex flex-col gap-4 pt-4 text-sm">
                 <li><a href="#">Preferências</a></li>
                 <li><a href="#">Plano</a></li>
-                <li><a href="{{ route('tags') }}">Tags</a></li>
+                <li><a href="{{ route('tags.index') }}">Tags</a></li>
                 <li><a href="#">Alertas</a></li>
                 <li><a href="#">Atividades</a></li>
             </div>

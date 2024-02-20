@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div x-data>
+<div x-data="{iconSource: ''}">
     <div class="flex justify-center gap-8 my-12 mx-8">
         <aside class="pt-2">
             <ul class="divide-y divide-gray-300 text-gray-500">
@@ -37,11 +37,12 @@
                 </div>
 
                 <ul class="divide-y px-4">
+                    @foreach ($accounts as $account)
                     <li class="flex items-center justify-between py-4">
                         <div class="flex items-center gap-6">
                             <img class="rounded-full w-12"
                                 src="https://assets.organizze.com.br/institutions/logos/itau.png">
-                            <h4 class="font-semibold">Itaú</h4>
+                            <h4 class="font-semibold">{{ $account->name }}</h4>
                         </div>
                         <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24">
@@ -49,42 +50,7 @@
                                 d="m9 5 7 7-7 7" />
                         </svg>
                     </li>
-                    <li class="flex items-center justify-between py-4">
-                        <div class="flex items-center gap-6">
-                            <img class="rounded-full w-12"
-                                src="https://assets.organizze.com.br/institutions/logos/nubank.png">
-                            <h4 class="font-semibold">Nubank</h4>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m9 5 7 7-7 7" />
-                        </svg>
-                    </li>
-                    <li class="flex items-center justify-between py-4">
-                        <div class="flex items-center gap-6">
-                            <img class="rounded-full w-12"
-                                src="https://assets.organizze.com.br/institutions/logos/will-bank.png">
-                            <h4 class="font-semibold">Will Bank</h4>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m9 5 7 7-7 7" />
-                        </svg>
-                    </li>
-                    <li class="flex items-center justify-between py-4">
-                        <div class="flex items-center gap-6">
-                            <img class="rounded-full w-12"
-                                src="https://assets.organizze.com.br/institutions/logos/caju.png">
-                            <h4 class="font-semibold">Home Office</h4>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m9 5 7 7-7 7" />
-                        </svg>
-                    </li>
+                    @endforeach
                 </ul>
 
                 <div class="px-4 mt-8 flex gap-2 items-center text-gray-600">
@@ -118,7 +84,7 @@
         class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-xl max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow p-8">
+            <div class="relative bg-white rounded-lg shadow p-8 h-[600px]">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                     <h3 class="text-lg font-semibold text-gray-900">
@@ -137,16 +103,19 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <form class="space-y-4" method="post" action="#">
+                    <form class="space-y-4" method="post" action="{{ route('accounts.store') }}">
                         @csrf
-                        <a href="#" class="flex flex-col items-center gap-2">
-                            <svg class="border-4 border-gray-100 rounded-full text-gray-300 hover:border-green-400 trasaction duration-500 ease-in-out"
+                        <input hidden name="icon" :value="iconSource" />
+                        <button type="button" data-modal-target="account-icon" data-modal-toggle="account-icon"
+                            class="flex flex-col items-center gap-2 w-full">
+                            <svg x-show="! iconSource" class="border-4 border-gray-100 rounded-full text-gray-300 hover:border-green-400 trasaction duration-500 ease-in-out"
                                 xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"
                                 viewBox="0 0 16 16">
                                 <circle cx="8" cy="8" r="8" />
                             </svg>
+                            <img x-show="iconSource" class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" :src="iconSource" />
                             <p class="text-xs text-gray-400">escolha um ícone</p>
-                        </a>
+                        </button>
                         <div class="flex flex-col gap-2">
                             <label for="name" class="block text-sm font-medium text-gray-500">
                                 Nome da conta
@@ -156,7 +125,7 @@
                             <span class="text-xs text-gray-400">Dê um nome para identificar esta conta</span>
                         </div>
                         <div class="flex gap-2 border-b pt-4 pb-6">
-                            <input type="checkbox" name="#" value="#"
+                            <input type="checkbox" name="visible"
                                 class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 focus:ring-2" />
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-500">
                                 Não somar no Saldo Geral
@@ -169,6 +138,50 @@
                             </button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Icon modal -->
+    <div id="account-icon" data-modal-placement="top-left" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+        class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow p-8 h-[600px]">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 rounded-t">
+                    <button type="button"
+                        class="absolute left-8 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                        data-modal-hide="account-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-move-left">
+                            <path d="M6 8L2 12L6 16" />
+                            <path d="M2 12H22" />
+                        </svg>
+                        <span class="sr-only">Go back</span>
+                    </button>
+                    <h3 class="text-lg font-semibold text-gray-900 w-full text-center">
+                        Selecione um ícone
+                    </h3>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5">
+                    <div class="grid grid-cols-4">
+                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
+                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/itau.png">
+                        </buton>
+                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
+                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/nubank.png">
+                        </buton>
+                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
+                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/will-bank.png">
+                        </buton>
+                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
+                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/caju.png">
+                        </buton>
+                    </div>
                 </div>
             </div>
         </div>

@@ -69,7 +69,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <form class="space-y-4" method="post" action="#">
+                    <form class="space-y-4" method="post" action="{{ route('accounts.store') }}">
                         @csrf
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-500">

@@ -8,4 +8,9 @@ enum CategoryType: string
 {
     case Expense = 'expense';
     case Income = 'income';
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
 }

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Core\Classification\Domain\Enum\CategoryColor;
+use Core\Classification\Domain\Enum\CategoryType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +17,8 @@ return new class () extends Migration {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type', ['expense', 'income']);
+            $table->enum('color', CategoryColor::values());
+            $table->enum('type', CategoryType::values());
             $table->timestamps();
         });
     }

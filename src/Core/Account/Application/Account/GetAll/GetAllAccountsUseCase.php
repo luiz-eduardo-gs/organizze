@@ -14,9 +14,6 @@ class GetAllAccountsUseCase
 
     public function execute(array $filters = []): array
     {
-        return [
-            'accounts' => $this->repository->getAll($filters),
-            'logos' => $this->repository->getLogos(),
-        ];
+        return $this->repository->getAll($filters);
     }
 }

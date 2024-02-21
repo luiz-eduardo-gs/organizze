@@ -64,7 +64,7 @@
                 array_filter($categories, fn ($category) => $category->type->value === 'expense') as $category)
                 <li class="flex justify-between py-2">
                     <div class="flex items-center gap-2">
-                        <div class="rounded-full p-5 bg-red-500"></div>
+                        <div style="background-color: {{ $category->color->value }}" class="rounded-full p-5"></div>
                         <a class="hover:text-gray-300" href="#">{{ $category->name }}</a>
                     </div>
                     <div class="text-blue-500">
@@ -80,7 +80,7 @@
                 array_filter($categories, fn ($category) => $category->type->value === 'income') as $category)
                 <li class="flex justify-between py-2">
                     <div class="flex items-center gap-2">
-                        <div class="rounded-full p-5 bg-green-500"></div>
+                        <div style="background-color: {{ $category->color->value }}" class="rounded-full p-5"></div>
                         <a class="hover:text-gray-300" href="#">{{ $category->name }}</a>
                     </div>
                     <div class="text-blue-500">
@@ -118,14 +118,15 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <div class="p-4" x-data="{color: 'text-gray-500'}">
+            <div class="p-4" x-data="{color: '#6b7280'}">
                 <form class="space-y-4" method="post" action="{{ route('categories.store') }}">
                     @csrf
                     <input hidden name="type" value="expense" />
+                    <input hidden name="color" :value="color" />
                     <div class="divide-y space-y-4">
                         <div class="flex items-center gap-2 mb-4">
                             <div>
-                                <svg class="border-4 rounded-full p-0.5" :class="color"
+                                <svg class="border-4 rounded-full p-0.5" :style="'color: ' + color"
                                     xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"
                                     viewBox="0 0 16 16">
                                     <circle cx="8" cy="8" r="8" />
@@ -143,83 +144,15 @@
                         <div class="pt-4">
                             <div class="text-gray-500 text-sm">Escolha uma cor</div>
                             <div class="flex">
-                                <div @click="color = 'text-gray-500'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-gray-500"
+                                @foreach ($colors as $color)
+                                <div @click="color = '{{ $color }}'">
+                                    <svg style="color: {{ $color }}" class="hover:border-4 rounded-full p-0.5"
                                         xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                                         viewBox="0 0 16 16">
                                         <circle cx="8" cy="8" r="8" />
                                     </svg>
                                 </div>
-                                <div @click="color = 'text-gray-700'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-gray-700"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-yellow-200'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-yellow-200"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-pink-300'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-pink-300"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-orange-400'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-orange-400"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-red-500'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-red-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-red-700'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-red-700"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-green-300'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-green-300"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-green-500'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-green-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-pink-700'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-pink-700"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-indigo-800'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-indigo-800"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div>
@@ -310,14 +243,15 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <div class="p-4" x-data="{color: 'text-gray-500'}">
+            <div class="p-4" x-data="{color: '#6b7280'}">
                 <form class="space-y-4" method="post" action="{{ route('categories.store') }}">
                     @csrf
                     <input hidden name="type" value="income" />
+                    <input hidden name="color" :value="color" />
                     <div class="divide-y space-y-4">
                         <div class="flex items-center gap-2 mb-4">
                             <div>
-                                <svg class="border-4 rounded-full p-0.5" :class="color"
+                                <svg :style="'color: ' + color" class="border-4 rounded-full p-0.5"
                                     xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"
                                     viewBox="0 0 16 16">
                                     <circle cx="8" cy="8" r="8" />
@@ -335,83 +269,15 @@
                         <div class="pt-4">
                             <div class="text-gray-500 text-sm">Escolha uma cor</div>
                             <div class="flex">
-                                <div @click="color = 'text-gray-500'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-gray-500"
+                                @foreach ($colors as $color)
+                                <div @click="color = '{{ $color }}'">
+                                    <svg style="color: {{ $color }}" class="hover:border-4 rounded-full p-0.5"
                                         xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                                         viewBox="0 0 16 16">
                                         <circle cx="8" cy="8" r="8" />
                                     </svg>
                                 </div>
-                                <div @click="color = 'text-gray-700'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-gray-700"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-yellow-200'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-yellow-200"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-pink-300'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-pink-300"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-orange-400'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-orange-400"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-red-500'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-red-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-red-700'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-red-700"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-green-300'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-green-300"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-green-500'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-green-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-pink-700'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-pink-700"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
-                                <div @click="color = 'text-indigo-800'">
-                                    <svg class="hover:border-4 rounded-full p-0.5 text-indigo-800"
-                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <circle cx="8" cy="8" r="8" />
-                                    </svg>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div>

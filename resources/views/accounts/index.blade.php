@@ -171,7 +171,7 @@
                     <div class="grid grid-cols-4">
                         @foreach ($logos as $logo)
                         <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
-                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="{{ $logo['logo'] }}">
+                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="{{ $logo }}">
                         </buton>
                         @endforeach
                     </div>

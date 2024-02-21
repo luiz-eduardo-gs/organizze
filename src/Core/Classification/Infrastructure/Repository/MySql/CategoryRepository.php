@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Core\Classification\Infrastructure\Repository\MySql;
 
 use Core\Classification\Domain\Entity\Category;
+use Core\Classification\Domain\Enum\CategoryColor;
 use Core\Classification\Domain\Enum\CategoryType;
 use Core\Classification\Domain\Repository\CategoryRepositoryInterface;
 use Core\Classification\Infrastructure\Model\CategoryModel;
@@ -12,9 +13,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
-    public function __construct(private CategoryModel $model)
-    {
-
+    public function __construct(
+        private CategoryModel $model
+    ) {
     }
 
     public function create(Category $category): Category
@@ -22,6 +23,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $this->toEntity(
             $this->model->create([
                 'name' => $category->name,
+                'color' => $category->color->value,
                 'type' => $category->type->value,
             ])
         );
@@ -42,6 +44,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return new Category(
             name: $model->name,
+            color: CategoryColor::from($model->color),
             type: CategoryType::from($model->type),
         );
     }

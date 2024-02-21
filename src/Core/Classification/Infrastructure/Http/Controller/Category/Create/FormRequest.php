@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Classification\Infrastructure\Http\Controller\Category\Create;
 
+use Core\Classification\Domain\Enum\CategoryColor;
 use Core\Classification\Domain\Enum\CategoryType;
 use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
 use Illuminate\Validation\Rules\Enum;
@@ -19,6 +20,7 @@ class FormRequest extends BaseFormRequest
     {
         return [
             'name' => ['required', 'max:255'],
+            'color' => ['required', new Enum(CategoryColor::class)],
             'type' => ['required', new Enum(CategoryType::class)],
         ];
     }

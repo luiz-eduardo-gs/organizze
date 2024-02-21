@@ -11,4 +11,6 @@ interface AccountRepositoryInterface
     public function create(Account $category): Account;
 
     public function getAll(array $filters = []): array;
+
+    public function getLogos(): array;
 }

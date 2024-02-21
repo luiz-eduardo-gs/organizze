@@ -7,11 +7,11 @@ namespace Core\Account\Infrastructure\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class AccountLogo extends Model
 {
     use HasFactory;
 
-    protected $table = 'accounts';
+    protected $table = 'account_logos';
 
-    protected $fillable = ['name', 'logo', 'visible'];
+    protected $fillable = ['logo'];
 }

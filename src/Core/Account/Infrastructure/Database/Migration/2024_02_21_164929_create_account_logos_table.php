@@ -12,12 +12,9 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('account_logos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('logo');
-            $table->boolean('visible');
-            $table->timestamps();
         });
     }
 
@@ -26,6 +23,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('account_logos');
     }
 };

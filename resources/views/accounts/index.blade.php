@@ -41,7 +41,7 @@
                     <li class="flex items-center justify-between py-4">
                         <div class="flex items-center gap-6">
                             <img class="rounded-full w-12"
-                                src="https://assets.organizze.com.br/institutions/logos/itau.png">
+                                src="{{ $account->logo }}">
                             <h4 class="font-semibold">{{ $account->name }}</h4>
                         </div>
                         <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@
         class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-xl max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow p-8 h-[600px]">
+            <div class="relative bg-white rounded-lg shadow p-8 h-[560px]">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                     <h3 class="text-lg font-semibold text-gray-900">
@@ -105,15 +105,15 @@
                 <div class="p-4 md:p-5">
                     <form class="space-y-4" method="post" action="{{ route('accounts.store') }}">
                         @csrf
-                        <input hidden name="icon" :value="iconSource" />
+                        <input hidden name="logo" :value="iconSource" />
                         <button type="button" data-modal-target="account-icon" data-modal-toggle="account-icon"
-                            class="flex flex-col items-center gap-2 w-full">
-                            <svg x-show="! iconSource" class="border-4 border-gray-100 rounded-full text-gray-300 hover:border-green-400 trasaction duration-500 ease-in-out"
+                            class="flex flex-col items-center gap-2 w-full cursor-default">
+                            <svg x-show="! iconSource" class="cursor-pointer border-4 border-gray-100 rounded-full text-gray-300 hover:border-green-400 trasaction duration-500 ease-in-out"
                                 xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"
                                 viewBox="0 0 16 16">
                                 <circle cx="8" cy="8" r="8" />
                             </svg>
-                            <img x-show="iconSource" class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" :src="iconSource" />
+                            <img x-show="iconSource" class="cursor-pointer border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" :src="iconSource" />
                             <p class="text-xs text-gray-400">escolha um ícone</p>
                         </button>
                         <div class="flex flex-col gap-2">
@@ -148,7 +148,7 @@
         class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-xl max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow p-8 h-[600px]">
+            <div class="relative bg-white rounded-lg shadow p-8 h-[560px]">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 rounded-t">
                     <button type="button"
@@ -169,18 +169,11 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                     <div class="grid grid-cols-4">
+                        @foreach ($logos as $logo)
                         <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
-                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/itau.png">
+                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="{{ $logo['logo'] }}">
                         </buton>
-                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
-                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/nubank.png">
-                        </buton>
-                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
-                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/will-bank.png">
-                        </buton>
-                        <buton x-on:click="iconSource = $el.children[0].src" data-modal-hide="account-icon" class="flex flex-col items-center gap-2 cursor-pointer">
-                            <img class="border-4 border-gray-100 rounded-full hover:border-green-400 trasaction duration-500 ease-in-out w-16" src="https://assets.organizze.com.br/institutions/logos/caju.png">
-                        </buton>
+                        @endforeach
                     </div>
                 </div>
             </div>

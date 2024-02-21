@@ -7,10 +7,11 @@ namespace Core\Account\Infrastructure\Repository\MySql;
 use Core\Account\Domain\Entity\Account;
 use Core\Account\Domain\Repository\AccountRepositoryInterface;
 use Core\Account\Infrastructure\Model\Account as AccountModel;
+use Core\Account\Infrastructure\Model\AccountLogo;
 
 class AccountRepository implements AccountRepositoryInterface
 {
-    public function __construct(private AccountModel $model)
+    public function __construct(private AccountModel $model, private AccountLogo $accountLogoModel)
     {
     }
 
@@ -19,6 +20,7 @@ class AccountRepository implements AccountRepositoryInterface
         return $this->toEntity(
             $this->model->create([
                 'name' => $account->name,
+                'logo' => $account->logo,
                 'visible' => $account->visible,
             ])
         );
@@ -31,10 +33,16 @@ class AccountRepository implements AccountRepositoryInterface
         return array_map(fn (AccountModel $account) => $this->toEntity($account), $accounts->all());
     }
 
+    public function getLogos(): array
+    {
+        return $this->accountLogoModel->all(['logo'])->toArray();
+    }
+
     private function toEntity(AccountModel $model): Account
     {
         return new Account(
             name: $model->name,
+            logo: $model->logo,
             visible: (bool) $model->visible,
         );
     }

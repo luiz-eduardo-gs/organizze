@@ -17,6 +17,7 @@ class FormRequest extends BaseFormRequest
     {
         return [
             'name' => ['required', 'max:255'],
+            'logo' => ['required', 'max:255'],
             'visible' => ['sometimes', 'accepted'],
         ];
     }

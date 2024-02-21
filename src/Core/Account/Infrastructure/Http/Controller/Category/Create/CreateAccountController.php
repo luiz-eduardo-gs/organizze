@@ -16,7 +16,11 @@ class CreateAccountController extends Controller
 
     public function __invoke(FormRequest $request): RedirectResponse
     {
-        $this->service->execute($request->validated('name'), $request->has('visible'));
+        $this->service->execute(
+            $request->validated('name'),
+            $request->validated('logo'),
+            $request->has('visible')
+        );
 
         return redirect()->back();
     }

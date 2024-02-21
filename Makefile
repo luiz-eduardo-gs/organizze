@@ -21,13 +21,19 @@ test:
 	$(SAIL) test
 
 migrate:
-	$(SAIL) artisan migrate
+	$(SAIL) artisan migrate:refresh --seed
+
+db-wipe:
+	$(SAIL) artisan db:wipe
 
 npm-dev:
 	$(SAIL) npm run dev
 
 ide-helper-models:
-	$(SAIL) artisan ide-helper:models --dir="app/Models" --dir="src/Core/Classification/Infrastructure/Model"
+	$(SAIL) artisan ide-helper:models \
+		--dir="app/Models" \
+		--dir="src/Core/Classification/Infrastructure/Model" \
+		--dir="src/Core/Account/Infrastructure/Model" \
 
 format:
 	tools/php-cs-fixer/vendor/bin/php-cs-fixer fix

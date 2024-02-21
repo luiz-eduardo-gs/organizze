@@ -17,8 +17,8 @@ class ListAccountController extends Controller
 
     public function __invoke(): View
     {
-        $accounts = $this->service->execute();
+        ['accounts' => $accounts, 'logos' => $logos] = $this->service->execute();
 
-        return view('accounts.index', compact('accounts'));
+        return view('accounts.index', compact('accounts', 'logos'));
     }
 }

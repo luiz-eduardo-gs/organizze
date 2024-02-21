@@ -13,8 +13,14 @@ class CreateAccountUseCase
     {
     }
 
-    public function execute(string $name, bool $visible = true): void
+    public function execute(string $name, string $logo, bool $visible = true): void
     {
-        $this->repository->create(new Account(name: $name, visible: $visible));
+        $this->repository->create(
+            new Account(
+                name: $name,
+                logo: $logo,
+                visible: $visible
+            )
+        );
     }
 }

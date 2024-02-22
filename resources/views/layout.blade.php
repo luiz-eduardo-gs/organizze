@@ -85,7 +85,7 @@
                             <a href="{{ route('accounts.index') }}" class="block px-4 py-2 hover:text-green-600">Contas</a>
                         </li>
                         <li>
-                            <a href="{{ route('cards') }}" class="block px-4 py-2 hover:text-green-600">Cartões de Crédito</a>
+                            <a href="{{ route('credit-cards.index') }}" class="block px-4 py-2 hover:text-green-600">Cartões de Crédito</a>
                         </li>
                     </ul>
                     <div class="py-2">

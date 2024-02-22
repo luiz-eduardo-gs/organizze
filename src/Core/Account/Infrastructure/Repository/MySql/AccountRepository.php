@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Account\Infrastructure\Repository\MySql;
 
 use Core\Account\Domain\Entity\Account;
-use Core\Account\Domain\Enum\AccountLogo;
+use Core\Account\Domain\Enum\FinancialInstitutionLogo;
 use Core\Account\Domain\Repository\AccountRepositoryInterface;
 use Core\Account\Infrastructure\Model\Account as AccountModel;
 
@@ -36,8 +36,9 @@ class AccountRepository implements AccountRepositoryInterface
     private function toEntity(AccountModel $model): Account
     {
         return new Account(
+            id: $model->id,
             name: $model->name,
-            logo: AccountLogo::from($model->logo),
+            logo: FinancialInstitutionLogo::from($model->logo),
             visible: (bool) $model->visible,
         );
     }

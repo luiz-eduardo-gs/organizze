@@ -22,11 +22,3 @@ Route::get('/', function () {
 Route::get('/transactions', function () {
     return view('transactions');
 })->name('transactions');
-
-Route::get('/accounts', function () {
-    return view('accounts.index');
-})->name('accounts.index');
-
-Route::get('/cards', function () {
-    return view('credit-cards.index');
-})->name('cards');

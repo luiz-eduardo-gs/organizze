@@ -7,7 +7,7 @@
             <div class="flex flex-col gap-4 mb-4">
                 <li class="text-green-600"><a href="{{ route('categories.index') }}">Categorias</a></li>
                 <li><a href="{{ route('accounts.index') }}">Contas</a></li>
-                <li><a href="{{ route('cards') }}">Cartões de crédito</a></li>
+                <li><a href="{{ route('credit-cards.index') }}">Cartões de crédito</a></li>
             </div>
             <div class="flex flex-col gap-4 pt-4 text-sm">
                 <li><a href="#">Preferências</a></li>
@@ -62,7 +62,7 @@
             <ul x-show="expense" class="divide-y py-4">
                 @foreach (
                 array_filter($categories, fn ($category) => $category->type->value === 'expense') as $category)
-                <li class="flex justify-between py-2">
+                <li class="flex justify-between items-center py-2">
                     <div class="flex items-center gap-2">
                         <div style="background-color: {{ $category->color->value }}" class="rounded-full p-5"></div>
                         <a class="hover:text-gray-300" href="#">{{ $category->name }}</a>
@@ -78,7 +78,7 @@
             <ul x-show="income" class="divide-y py-4">
                 @foreach (
                 array_filter($categories, fn ($category) => $category->type->value === 'income') as $category)
-                <li class="flex justify-between py-2">
+                <li class="flex justify-between items-center py-2">
                     <div class="flex items-center gap-2">
                         <div style="background-color: {{ $category->color->value }}" class="rounded-full p-5"></div>
                         <a class="hover:text-gray-300" href="#">{{ $category->name }}</a>

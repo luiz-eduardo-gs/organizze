@@ -6,7 +6,7 @@ namespace Core\Account\Infrastructure\Http\Controller\Category\List;
 
 use App\Http\Controllers\Controller;
 use Core\Account\Application\Account\GetAll\GetAllAccountsUseCase;
-use Core\Account\Domain\Enum\AccountLogo;
+use Core\Account\Domain\Enum\FinancialInstitutionLogo;
 use Illuminate\View\View;
 
 class ListAccountController extends Controller
@@ -19,7 +19,7 @@ class ListAccountController extends Controller
     public function __invoke(): View
     {
         $accounts = $this->service->execute();
-        $logos = AccountLogo::values();
+        $logos = FinancialInstitutionLogo::values();
 
         return view('accounts.index', compact('accounts', 'logos'));
     }

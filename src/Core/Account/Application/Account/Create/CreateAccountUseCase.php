@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Account\Application\Account\Create;
 
 use Core\Account\Domain\Entity\Account;
-use Core\Account\Domain\Enum\AccountLogo;
+use Core\Account\Domain\Enum\FinancialInstitutionLogo;
 use Core\Account\Domain\Repository\AccountRepositoryInterface;
 
 class CreateAccountUseCase
@@ -14,7 +14,7 @@ class CreateAccountUseCase
     {
     }
 
-    public function execute(string $name, AccountLogo $logo, bool $visible = true): void
+    public function execute(string $name, FinancialInstitutionLogo $logo, bool $visible = true): void
     {
         $this->repository->create(
             new Account(

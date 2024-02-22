@@ -271,7 +271,7 @@
             </div>
         </div>
 
-        <a href="{{ route('cards') }}"
+        <a href="{{ route('credit-cards.index') }}"
             class="text-gray-400 block text-center border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
             cartões</a>
     </div>

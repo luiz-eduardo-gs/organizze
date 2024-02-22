@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Account\Domain\Enum;
 
-enum AccountLogo: string
+enum FinancialInstitutionLogo: string
 {
     case Itau = 'https://assets.organizze.com.br/institutions/logos/itau.png';
     case Nubank = 'https://assets.organizze.com.br/institutions/logos/nubank.png';

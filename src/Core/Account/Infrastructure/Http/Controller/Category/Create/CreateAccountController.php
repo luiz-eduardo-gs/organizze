@@ -6,7 +6,7 @@ namespace Core\Account\Infrastructure\Http\Controller\Category\Create;
 
 use App\Http\Controllers\Controller;
 use Core\Account\Application\Account\Create\CreateAccountUseCase;
-use Core\Account\Domain\Enum\AccountLogo;
+use Core\Account\Domain\Enum\FinancialInstitutionLogo;
 use Illuminate\Http\RedirectResponse;
 
 class CreateAccountController extends Controller
@@ -19,7 +19,7 @@ class CreateAccountController extends Controller
     {
         $this->service->execute(
             $request->validated('name'),
-            AccountLogo::from($request->validated('logo')),
+            FinancialInstitutionLogo::from($request->validated('logo')),
             $request->has('visible')
         );
 

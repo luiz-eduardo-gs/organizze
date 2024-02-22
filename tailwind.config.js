@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'bottom': 'inset 0 -3px 0 #fff',
+      },
       colors: {
         'green': {
           50: '#f0fdf4',
@@ -15,7 +18,7 @@ export default {
           200: '#bbf7d0',
           300: '#86efac',
           400: '#4ade80',
-          500: '#22c55e',
+          500: '#16c64f',
           600: '#16a34a',
           700: '#15803d',
           800: '#166534',

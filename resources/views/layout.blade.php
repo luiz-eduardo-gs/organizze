@@ -14,7 +14,7 @@
 
 <body class="bg-zinc-100">
     <header class="bg-green-500">
-        <nav class="h-14 flex justify-between items-center mx-auto text-white w-[1079px]">
+        <nav class="h-[52px] flex justify-between items-center mx-auto text-white w-[1079px]">
             <a href="/">
                 <svg width="145" height="32" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.5"
@@ -52,15 +52,15 @@
                 </svg>
             </a>
 
-            <ul class="flex p-4 gap-8 text-sm">
-                <li class="hover:text-green-100 hover:border-b transaction duration-100 ease-in-out"><a href="/">visão
-                        geral</a></li>
-                <li class="hover:text-green-100 hover:border-b transaction duration-100 ease-in-out"><a
-                        href="{{ route('transactions') }}">lançamentos</a></li>
-                <li class="hover:text-green-100 hover:border-b transaction duration-100 ease-in-out"><a
-                        href="#">relatórios</a></li>
-                <li class="hover:text-green-100 hover:border-b transaction duration-100 ease-in-out"><a href="#">limite
-                        de gastos</a></li>
+            <ul class="flex items-center gap-8 text-gray-200 h-full">
+                <li class="hover:text-white transaction duration-100 ease-in-out h-full flex items-center shadow-bottom font-bold">
+                    <a href="/">visão geral</a></li>
+                <li class="hover:text-white transaction duration-100 ease-in-out h-full flex items-center">
+                    <a href="{{ route('transactions') }}">lançamentos</a></li>
+                <li class="hover:text-white transaction duration-100 ease-in-out h-full flex items-center">
+                    <a href="#">relatórios</a></li>
+                <li class="hover:text-white transaction duration-100 ease-in-out h-full flex items-center">
+                    <a href="#">limite de gastos</a></li>
             </ul>
 
             <div class="flex gap-4 items-center">

@@ -28,5 +28,5 @@ Route::get('/accounts', function () {
 })->name('accounts.index');
 
 Route::get('/cards', function () {
-    return view('cards');
+    return view('credit-cards.index');
 })->name('cards');

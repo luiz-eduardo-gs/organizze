@@ -271,9 +271,9 @@
             </div>
         </div>
 
-        <button
-            class="text-gray-400 border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
-            cartões</button>
+        <a href="{{ route('cards') }}"
+            class="text-gray-400 block text-center border rounded-md border-gray-200 w-full py-2 transition duration-700 ease-in-out hover:bg-green-600 hover:text-white">Gerenciar
+            cartões</a>
     </div>
 </div>
 @endsection

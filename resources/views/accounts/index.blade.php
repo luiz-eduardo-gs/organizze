@@ -125,9 +125,9 @@
                             <span class="text-xs text-gray-400">Dê um nome para identificar esta conta</span>
                         </div>
                         <div class="flex gap-2 border-b pt-4 pb-6">
-                            <input type="checkbox" name="visible"
+                            <input id="visible" type="checkbox" name="visible"
                                 class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 focus:ring-2" />
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-500">
+                            <label for="visible" class="block mb-2 text-sm font-medium text-gray-500">
                                 Não somar no Saldo Geral
                             </label>
                         </div>

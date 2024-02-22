@@ -82,10 +82,10 @@
                             <a href="{{ route('categories.index') }}" class="block px-4 py-2 hover:text-green-600">Categorias</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:text-green-600">Contas</a>
+                            <a href="{{ route('accounts.index') }}" class="block px-4 py-2 hover:text-green-600">Contas</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:text-green-600">Cartões de Crédito</a>
+                            <a href="{{ route('cards') }}" class="block px-4 py-2 hover:text-green-600">Cartões de Crédito</a>
                         </li>
                     </ul>
                     <div class="py-2">
@@ -94,7 +94,7 @@
                                 <a href="#" class="block px-4 py-2 hover:text-green-600">Preferências</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:text-green-600">Tags</a>
+                                <a href="{{ route('tags.index') }}" class="block px-4 py-2 hover:text-green-600">Tags</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:text-green-600">Alertas</a>

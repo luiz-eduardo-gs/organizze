@@ -29,6 +29,9 @@ class TagRepository implements TagRepositoryInterface
 
     private function toEntity(TagModel $model): Tag
     {
-        return new Tag($model->name);
+        return new Tag(
+            id: $model->id,
+            name: $model->name
+        );
     }
 }

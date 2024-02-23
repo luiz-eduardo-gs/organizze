@@ -15,6 +15,7 @@ readonly class CreditCard
         public int $dueDay,
         public FinancialInstitutionLogo $logo,
         public int $defaultAccountId,
+        public ?int $id = null,
     ) {
     }
 }

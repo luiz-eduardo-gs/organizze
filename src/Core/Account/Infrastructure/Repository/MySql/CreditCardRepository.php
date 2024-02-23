@@ -39,6 +39,7 @@ class CreditCardRepository implements CreditCardRepositoryInterface
     private function toEntity(CreditCardModel $model): CreditCard
     {
         return new CreditCard(
+            id: $model->id,
             name: $model->name,
             limit: (float) $model->limit,
             closingDay: (int) $model->closing_day,

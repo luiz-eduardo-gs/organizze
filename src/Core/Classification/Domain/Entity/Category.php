@@ -13,6 +13,7 @@ readonly class Category
         public string $name,
         public CategoryType $type,
         public CategoryColor $color,
+        public ?int $id = null,
     ) {
 
     }

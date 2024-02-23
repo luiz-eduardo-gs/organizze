@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Core\Account\Application\Account\GetAll\GetAllAccountsUseCase;
+use Core\Account\Application\CreditCard\GetAll\GetAllCreditCardsUseCase;
+use Core\Classification\Application\Category\GetAll\GetAllCategoriesUseCase;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+    $accounts = app(GetAllAccountsUseCase::class)->execute();
+    $creditCards = app(GetAllCreditCardsUseCase::class)->execute();
+    $categories = app(GetAllCategoriesUseCase::class)->execute();
+    return view('app', compact('accounts', 'creditCards', 'categories'));
 });
+
+Route::post('/expense', function (Request $request) {
+    dd($request->all());
+})->name('expenses.store');
 
 Route::get('/transactions', function () {
     return view('transactions');

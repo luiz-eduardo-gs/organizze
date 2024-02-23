@@ -6,7 +6,7 @@ namespace Core\Classification\Domain\Entity;
 
 readonly class Tag
 {
-    public function __construct(public string $name)
+    public function __construct(public string $name, public ?int $id = null)
     {
 
     }

@@ -43,6 +43,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     private function toEntity(CategoryModel $model): Category
     {
         return new Category(
+            id: $model->id,
             name: $model->name,
             color: CategoryColor::from($model->color),
             type: CategoryType::from($model->type),

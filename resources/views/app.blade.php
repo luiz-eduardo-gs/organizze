@@ -39,10 +39,11 @@
             <button data-modal-target="expense" data-modal-toggle="expense"
                 class="flex flex-col gap-2 items-center justify-center border border-gray-100 rounded-md py-4 px-4 w-20 transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer">
                 <span class="text-red-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
-                        class="bi bi-dash-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-minus-circle">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 12h8" />
                     </svg>
                 </span>
                 <span class="uppercase text-sm">Despesa</span>
@@ -50,11 +51,12 @@
             <button data-modal-target="income" data-modal-toggle="income"
                 class="flex flex-col gap-2 items-center justify-center border border-gray-100 rounded-md py-4 px-4 w-20 transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer">
                 <span class="text-green-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
-                        class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-plus-circle">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 12h8" />
+                        <path d="M12 8v8" />
                     </svg>
                 </span>
                 <span class="uppercase text-sm">Receita</span>
@@ -62,24 +64,28 @@
             <button
                 class="flex flex-col gap-2 items-center justify-center border border-gray-100 rounded-md py-4 px-4 w-20 transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer">
                 <span class="text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
-                        class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-arrow-left-right">
+                        <path d="M8 3 4 7l4 4" />
+                        <path d="M4 7h16" />
+                        <path d="m16 21 4-4-4-4" />
+                        <path d="M20 17H4" />
                     </svg>
                 </span>
                 <span class="uppercase text-sm">Transf.</span>
             </button>
             <button
                 class="flex flex-col gap-2 items-center justify-center border border-gray-100 rounded-md py-4 px-4 w-20 transition duration-700 ease-in-out hover:bg-gray-50 cursor-pointer">
-                <span class="text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
-                        class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                <span class="text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-paperclip">
+                        <path
+                            d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
                     </svg>
                 </span>
-                <span class="uppercase text-sm">IMPORTAR</span>
+                <span class="uppercase text-sm">Importar</span>
             </button>
         </div>
     </div>

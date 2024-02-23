@@ -8,7 +8,7 @@
                 <div class="flex flex-col gap-4 mb-4">
                     <li><a href="{{ route('categories.index') }}">Categorias</a></li>
                     <li><a href="{{ route('accounts.index') }}">Contas</a></li>
-                    <li><a href="{{ route('cards') }}">Cartões de crédito</a></li>
+                    <li><a href="{{ route('credit-cards.index') }}">Cartões de crédito</a></li>
                 </div>
                 <div class="flex flex-col gap-4 pt-4 text-sm">
                     <li><a href="#">Preferências</a></li>

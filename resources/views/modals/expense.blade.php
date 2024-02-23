@@ -6,6 +6,14 @@
         recurrence: '',
         number: '',
         type: '',
+        today() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+
+            return dd + '/' + mm + '/' + yyyy;
+        }
      }"
     class="hidden mt-14 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-xl max-h-full">
@@ -18,7 +26,7 @@
                 </h3>
                 <button type="button"
                     x-on:click="repeat = false; observation = false; tags = false; recurrence = ''; numbers = ''; type = '';"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-red-700 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center transition durantion-700 ease-in-out"
                     data-modal-hide="expense">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
@@ -33,7 +41,7 @@
                 <form class="space-y-4" method="post" action="#">
                     @csrf
                     <div>
-                        <label for=" description" class="block mb-2 text-sm font-medium text-gray-500 ">
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-500 ">
                             Descrição
                         </label>
                         <input type="text" name="description" id="description"
@@ -43,7 +51,7 @@
                     <div class="flex justify-between gap-2">
                         <div class="basis-1/2">
                             <label for="value" class="block mb-2 text-sm font-medium text-gray-500 ">Valor</label>
-                            <input type="number" name="value" id="value"
+                            <input type="text" name="value" id="value" x-mask:dynamic="'R$ ' + $money($input, '.', ',')"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
                                 placeholder="R$ 0,00" required />
                         </div>
@@ -61,7 +69,7 @@
                                     </div>
                                     <input datepicker datepicker-autohide datepicker-buttons datepicker-autoselect-today
                                         required datepicker-format="dd/mm/yyyy" type="text" id="due-date"
-                                        name="due-date"
+                                        name="due-date" :value="today()"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5 "
                                         placeholder="Selecione a data">
                                 </div>
@@ -70,18 +78,20 @@
                     </div>
                     <button x-data="{isPaid: true}" type="button" @click="isPaid = ! isPaid">
                         <input hidden name="is-paid" :value="isPaid" />
-                        <svg x-show="isPaid" id="thumbs-up" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor"
-                            class="bi bi-hand-thumbs-up-fill text-green-500 mt-6 absolute top-[39%] right-8"
-                            viewBox="0 0 16 16">
+                        <svg x-show="isPaid" id="thumbs-up" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="text-green-500 mt-6 absolute top-[242px] right-6">
+                            <path d="M7 10v12" />
                             <path
-                                d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                                d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" />
                         </svg>
-                        <svg x-show="! isPaid" id="thumbs-down" xmlns="http://www.w3.org/2000/svg" width="16"
-                            height="16" fill="currentColor"
-                            class="bi bi-hand-thumbs-down-fill mt-6 absolute top-[39%] right-8" viewBox="0 0 16 16">
+                        <svg x-show="! isPaid" id="thumbs-down" xmlns="http://www.w3.org/2000/svg" width="18"
+                            height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="mt-6 absolute top-[244px] right-7">
+                            <path d="M17 14V2" />
                             <path
-                                d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591" />
+                                d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z" />
                         </svg>
                     </button>
                     <div class="flex justify-between gap-2">
@@ -99,7 +109,11 @@
                                 class="block mb-2 text-sm font-medium text-gray-500 ">Categoria</label>
                             <select id="category" name="category"
                                 class="w-full rounded-lg focus:border-green-500 focus:ring-green-500">
-                                <option selected>Buscar a categoria...</option>
+                                <option hidden>Buscar a categoria...</option>
+                                @foreach (array_filter($categories, fn ($category) => $category->type->value ===
+                                'expense') as $category)
+                                <option value="#">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -172,13 +186,16 @@
                             </svg>
                         </button>
                     </div>
-                    <div>
+                    <div class="flex justify-center">
                         <button type="submit"
-                            class="text-green-500 flex justify-center items-center w-full transition duration-700 ease-in-out hover:text-green-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" fill="currentColor"
-                                class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            class="text-green-700 flex justify-center items-center transition duration-700 ease-in-out hover:text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                    d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                    stroke-width="0" fill="currentColor" />
                             </svg>
                         </button>
                     </div>
